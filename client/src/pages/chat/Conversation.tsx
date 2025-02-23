@@ -10,7 +10,8 @@ import { addMessage, getGroupsMessages, getPrivateMessages, setOnlineUsers } fro
 import { AppDispatch } from '../../redux/store';
 import Error from '../../components/features/Error';
 const SOCKET_URL = 'ws://localhost:5000';
-
+import groupImage from '../..//assets/gr.avif'
+import privateImage from '../..//assets/pt.avif'
 const WorkhubsChat = () => {
     const user = JSON.parse(localStorage.getItem("user") || "null");
     useEffect(() => {
@@ -88,8 +89,8 @@ const WorkhubsChat = () => {
     return (
         <div className="h-[100vh] bg-gray-50 flex">
             <div className='p-4 h-full flex flex-col items-center justify-center gap-6'>
-                <img alt='group' onClick={() => handleChangeChatToGroup()} className='w-14 rounded-full shadow-md hover:scale-95 hover:opacity-70 cursor-pointer p-2' src='https://img.freepik.com/premium-vector/consultative-team-icon-3d-illustration-from-corporate-development-collection-creative-consultative-team-3d-icon-web-design-templates-infographics-more_676904-656.jpg' />
-                <img alt='private' onClick={() => handleChangeChatToPrivate()} className='w-14 rounded-full shadow-md hover:scale-95 hover:opacity-70 cursor-pointer p-2' src='https://img.freepik.com/premium-vector/discussing-icon-3d-illustration-from-customer-support-collection-creative-discussing-3d-icon-web-design-templates-infographics-more_676904-2603.jpg?w=360' />
+                <img alt='group' onClick={() => handleChangeChatToGroup()} className='w-14 rounded-full shadow-md hover:scale-95 hover:opacity-70 cursor-pointer p-2' src={groupImage} />
+                <img alt='private' onClick={() => handleChangeChatToPrivate()} className='w-14 rouninfographicsded-full shadow-md hover:scale-95 hover:opacity-70 cursor-pointer p-2' src={privateImage} />
             </div>
             {
                 msg && <Error message={msg} />
