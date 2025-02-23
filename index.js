@@ -45,18 +45,19 @@ app.use(xss());
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
-      defaultSrc: ["'self'"], // Best practice: default-src should be the first directive
+      defaultSrc: ["'self'"],
       scriptSrc: ["'self'", "'unsafe-inline'", "https://apis.example.com"],
       styleSrc: ["'self'", "https://fonts.googleapis.com"],
       imgSrc: ["'self'", "data:", "https://images.example.com"],
-      connectSrc: ["'self'", "wss://localhost:5000"], // Allow WebSockets
+      connectSrc: ["'self'", "ws://localhost:5000", "wss://localhost:5000"], // Allow WebSockets
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
-      frameAncestors: ["'none'"], // Prevent iframe embedding
-      objectSrc: ["'none'"], // Disallow plugins
+      frameAncestors: ["'none'"],
+      objectSrc: ["'none'"],
       upgradeInsecureRequests: [],
     },
   })
 );
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({ origin: "http://localhost:5173", credentials: true }));
