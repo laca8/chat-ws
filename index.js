@@ -18,6 +18,16 @@ app.use((req, res, next) => {
   );
   next();
 });
+app.use((req, res, next) => {
+  res.setHeader(
+    "Content-Security-Policy",
+    "default-src 'self'; " +
+      "img-src 'self' https://img.freepik.com https://*.freepik.com data:; " +
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval'; " +
+      "style-src 'self' 'unsafe-inline';"
+  );
+  next();
+});
 dotenv.config();
 const server = http.createServer(app);
 //create webSocket server
