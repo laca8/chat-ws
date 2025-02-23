@@ -10,6 +10,14 @@ const connDb = require("./config/db");
 const WebSocket = require("ws");
 const http = require("http");
 const app = express();
+// Set CSP headers to allow WebSocket connections
+app.use((req, res, next) => {
+  res.setHeader(
+    "Content-Security-Policy",
+    "default-src 'self'; connect-src 'self' ws://localhost:5000 wss://localhost:5000; script-src 'self' 'unsafe-inline' 'unsafe-eval'"
+  );
+  next();
+});
 dotenv.config();
 const server = http.createServer(app);
 //create webSocket server
